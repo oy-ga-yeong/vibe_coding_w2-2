@@ -116,4 +116,6 @@ def search(req: SearchRequest):
     except Exception as e:
         return StandardResponse(success=False, data=None, message=f"검색 오류: {e}").model_dump()
 
+print("PR 테스트용 간단 수정")
+
 print(list(DDGS().text("아이폰 15프로", max_results=5))) 
