@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# macOS
+.DS_Store
+
+# VSCode
+.vscode/
+
+# 가상환경
+venv/
+ENV/
+
+# 테스트 캐시
+.pytest_cache/
+
+# 기타
+*.log 

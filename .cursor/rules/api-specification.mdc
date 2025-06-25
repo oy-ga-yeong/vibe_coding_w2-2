@@ -1,0 +1,136 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# API 명세서 (API Specification)
+
+## FastAPI 엔드포인트
+
+| 엔드포인트 | HTTP 메서드 | 요청 파라미터 | 요청 예시 | 응답 구조 |
+|------------|-------------|---------------|-----------|-----------|
+| `/` | GET | 없음 | `GET /` | `{"message": "온라인 쇼핑 최저가 검색 챗봇 API"}` |
+| `/search` | POST | `{"query": "string", "session_id": "string"}` | `{"query": "노트북 충전기 최저가", "session_id": "user_123"}` | `{"task_id": "string", "status": "processing"}` |
+| `/stream/{session_id}` | GET | `session_id`: 세션 식별자 | `GET /stream/user_123` | SSE 스트림 응답 |
+| `/health` | GET | 없음 | `GET /health` | `{"status": "healthy", "timestamp": "2024-01-01T00:00:00Z"}` |
+
+## 요청/응답 상세
+
+### POST /search
+**요청 파라미터:**
+- `query` (string, required): 검색할 상품명
+- `session_id` (string, required): 사용자 세션 식별자
+
+**요청 예시:**
+```json
+{
+  "query": "아이폰 15 케이스",
+  "session_id": "user_123"
+}
+```
+
+**응답 구조:**
+```json
+{
+  "task_id": "task_abc123",
+  "status": "processing",
+  "message": "검색을 시작합니다."
+}
+```
+
+### GET /stream/{session_id}
+**요청 파라미터:**
+- `session_id` (path parameter): 세션 식별자
+
+**요청 예시:**
+```
+GET /stream/user_123
+Accept: text/event-stream
+```
+
+**응답 구조 (SSE):**
+```
+event: progress
+data: {"step": "searching", "message": "네이버 쇼핑 검색 중..."}
+
+event: progress  
+data: {"step": "parsing", "message": "가격 정보 분석 중..."}
+
+event: result
+data: {
+  "products": [
+    {
+      "shop_name": "C전자몰",
+      "original_price": 50000,
+      "discount_price": 39900,
+      "discount_rate": 20,
+      "shipping_cost": 0,
+      "total_price": 39900,
+      "savings": 10100,
+      "purchase_url": "https://example.com/product/123"
+    }
+  ],
+  "summary": {
+    "lowest_price": 39900,
+    "avg_savings": 6525,
+    "free_shipping_count": 2
+  }
+}
+
+event: complete
+data: {"message": "검색이 완료되었습니다."}
+```
+
+### GET /health
+**요청 파라미터:** 없음
+
+**요청 예시:**
+```
+GET /health
+```
+
+**응답 구조:**
+```json
+{
+  "status": "healthy",
+  "timestamp": "2024-01-01T12:00:00Z",
+  "services": {
+    "langgraph_agent": "running",
+    "gemini_llm": "available",
+    "mcp_tools": "connected"
+  }
+}
+```
+
+## 데이터 모델
+
+### Product 모델
+```json
+{
+  "shop_name": "string",
+  "original_price": "number",
+  "discount_price": "number", 
+  "discount_rate": "number",
+  "shipping_cost": "number",
+  "total_price": "number",
+  "savings": "number",
+  "purchase_url": "string"
+}
+```
+
+### Summary 모델
+```json
+{
+  "lowest_price": "number",
+  "avg_savings": "number",
+  "free_shipping_count": "number"
+}
+```
+
+### SSE Progress 모델
+```json
+{
+  "step": "string",
+  "message": "string"
+}
+```

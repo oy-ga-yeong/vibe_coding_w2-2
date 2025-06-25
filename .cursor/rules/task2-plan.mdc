@@ -1,0 +1,28 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# TASK-002 FastAPI 백엔드 기본 구조 구현 개발 계획
+
+## 구현 항목
+- FastAPI 서버 인스턴스 생성
+- API 라우터 구성
+- 기본 엔드포인트(GET, POST 등) 스켈레톤 구현
+- Pydantic 모델 정의
+- 동기 방식 API 구현(비동기 아님)
+- 예외 처리 및 기본 응답 구조 설계
+
+## 기술 스택 및 라이브러리
+- Python 3.11
+- FastAPI
+- Pydantic
+- Uvicorn (개발 서버 실행용)
+
+## 개발 계획
+1. FastAPI 인스턴스(app) 생성
+2. API 라우터 파일/모듈 분리 및 등록
+3. 기본 엔드포인트(GET, POST) 스켈레톤 작성
+4. Pydantic 모델로 요청/응답 데이터 구조 정의
+5. 예외 처리 및 표준 응답 포맷 설계
+6. Uvicorn으로 서버 실행 및 테스트

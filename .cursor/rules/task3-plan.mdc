@@ -1,0 +1,53 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# TASK-003 개발 계획: LangGraph Agent 구현
+
+## 구현 항목
+
+### 1. LangGraph Agent 구현
+- React Agent 설정
+- Gemini LLM 연동  
+- DuckDuckGo Tool 연동
+- 메모리 없음 (single turn)
+- 상품 웹 검색 및 LLM 결과 생성
+
+## 기술 스택 및 라이브러리
+
+### Agent 프레임워크
+- **LangGraph**: Pre-built React Agent 사용
+- **Agent 타입**: create_react_agent() 함수로 단일 턴 Agent 구현
+
+### LLM 모델
+- **Gemini-2.5-flash-preview-05-20**: Google Gemini 모델 사용
+- **용도**: 웹 검색 결과를 기반으로 상품 검색 결과 생성
+
+### Tool
+- **LangChain DuckDuckGo Search Tool**: 웹 검색 기능
+
+### 모니터링
+- **LangSmith**: Agent 실행 모니터링 및 디버깅
+
+## 개발 계획
+
+1. **환경 설정 및 의존성 설치**
+   - 필요 패키지 설치
+
+2. **DuckDuckGo 검색 Tool 설정**
+   - DuckDuckGoSearchRun Tool 초기화
+   - Tool 기능 테스트
+
+3. **Gemini LLM 모델 설정**
+   - ChatGoogleGenerativeAI 모델 초기화
+   - 모델 연결 테스트
+
+4. **React Agent 생성**
+   - create_react_agent 함수로 Agent 생성
+   - LLM과 Tool 연결
+   - 시스템 프롬프트 설정
+
+5. **FastAPI 통합**
+   - Agent를 FastAPI 엔드포인트에 연결
+   - 요청/응답 처리 로직 구현

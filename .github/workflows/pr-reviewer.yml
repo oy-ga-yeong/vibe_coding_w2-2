@@ -1,0 +1,14 @@
+name: PR Reviewer
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  reviewer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add PR reviewer
+        uses: ahmadnassri/action-pr-reviewer@v1
+        with:
+          reviewers: reviewer1 

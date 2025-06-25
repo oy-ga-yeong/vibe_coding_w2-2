@@ -1,0 +1,47 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# 프로젝트 폴더 구조 (Project Structure)
+
+## 폴더 트리
+
+```
+vctest6/
+├── backend/                           # FastAPI 백엔드
+│   ├── __init__.py
+│   ├── main.py                        # FastAPI 애플리케이션 엔트리포인트
+│   ├── requirements.txt               # Python 의존성
+│   ├── app/
+│   │   ├── __init__.py
+│   │   ├── api/                       # API Layer (Presentation)
+│   │   │   ├── __init__.py
+│   │   │   ├── routes/
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── chat.py            
+│   │   ├── services/                  # Service Layer
+│   │   │   ├── __init__.py
+│   │   │   ├── agent_service.py      
+│   │   ├── agents/                    # Agent Layer (AI Processing)
+│   │   │   ├── __init__.py
+│   │   │   ├── langgraph_agent.py     # LangGraph React Agent
+│   └── tests/
+│       ├── __init__.py
+├── frontend/                          # Streamlit 프론트엔드
+│   ├── __init__.py
+├── docs/                              # 문서
+│   ├── ux-wireframes.md
+│   └── chat-interface-wireframe.svg
+├── .cursor/
+│   └── rules/
+│       ├── project-scope.mdc
+│       ├── user-scenarios.mdc
+│       ├── prd.mdc
+│       ├── tech-stack.mdc
+│       ├── system-architecture.mdc
+│       ├── api-specification.mdc
+│       └── project-structure.mdc
+├── .env                               # 환경 변수
+├── .gitignore
+└── README.md

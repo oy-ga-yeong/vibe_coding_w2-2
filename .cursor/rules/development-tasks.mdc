@@ -1,0 +1,15 @@
+---
+description: development tasks
+globs: 
+alwaysApply: false
+---
+# 개발 태스크 (Development Tasks)
+
+## 개발 태스크 테이블
+
+| Task ID | Title | Description | Status | Dependencies | Priority | Details | Test Strategy |
+|---------|-------|-------------|--------|--------------|----------|---------|---------------|
+| TASK-001 | 프로젝트 구조 및 환경 설정 | 프로젝트 폴더 구조 생성, 의존성 설치, 환경 설정 | Not Started | - | High | backend/frontend 폴더 생성, requirements.txt 작성, .env 설정, Python 3.11 환경 구성 | 폴더 구조 검증, 환경 변수 로드 테스트 |
+| TASK-002 | FastAPI 백엔드 기본 구조 구현 | FastAPI 서버 기본 구조 및 API 엔드포인트 스켈레톤 구현 | Not Started | TASK-001 | High | main.py, API 라우터, Chat API 구현, 동기 방식 구현(not streaming) | API 엔드포인트 응답 테스트 |
+| TASK-003 | LangGraph Agent 구현 | React Agent 설정, Gemini LLM 연동, Tool 연동, 메모리 없음(single turn) | Not Started | TASK-002 | High | react agent 가 툴 사용해서 상품을 웹 검색하고 LLM을 통해 검색결과 생성 | Agent 실행 테스트, LLM 응답 검증 |
+| TASK-004 | Streamlit 프론트엔드 구현 | 챗봇 UI, 메시지 표시 | Not Started | TASK-005 | High | 챗봇 프렌트엔드 구현 | UI 컴포넌트 렌더링 테스트, 사용자 인터랙션 테스트 |

@@ -1,0 +1,27 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# 1번 태스크 개발 계획
+
+## 구현 항목
+1. 챗봇 인터페이스 구현 (Streamlit)
+2. 상품 검색 결과 표시 기능
+3. FastAPI 기반 API 서버 구축
+4. Agent 연동 및 결과 처리
+5. LangGraph 기반 Agent 구성
+6. DuckDuckGo Tool 연동
+
+## 기술 스택 및 라이브러리
+- **프론트엔드**: Python, Streamlit
+- **백엔드**: Python, FastAPI, Uvicorn
+- **Agent**: LangGraph, Gemini, LangChain DuckDuckGo
+
+## 개발 계획
+1. Streamlit을 이용한 챗봇 UI 기본 구조 설계
+2. FastAPI 서버 기본 구조 설계 및 엔드포인트 정의
+3. Streamlit과 FastAPI 연동 테스트
+4. LangGraph 기반 Agent 설계 및 연동
+5. DuckDuckGo Tool 연동 및 검색 결과 처리
+6. 전체 기능 통합 및 테스트
